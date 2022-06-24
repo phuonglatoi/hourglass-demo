@@ -1,0 +1,112 @@
+body{
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(200deg, #b5aee4, #505285);
+}
+.container{
+    position: absolute;
+    top: 300px;
+}
+h2{
+    color: #fff;
+    font-size: 96px;
+    letter-spacing: 15px;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 76px;
+    outline: none;
+    --c: cabbe9;
+    text-shadow: 0 0 10px var(--c),
+     0 0 20px var(--c),
+     0 0 40px var(--c),
+     0 0 80px var(--c),
+     0 0 160px var(--c);
+    animation: animate 5s linear infinite;
+}
+@keyframes animate{
+    to{
+        filter: hue-rotate(360deg);
+    }
+}
+.loading{
+    width: 86px;
+    height: 196px;
+    /* border: 1px solid; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    animation: rotating 2s linear infinite;
+}
+.top,
+.bottom{
+    width: 70px;
+    height: 70px;
+    border-style: solid;
+    border-color: #dcdcdc;
+    border-width: 4px 4px 12px 12px;
+    border-radius: 50% 100% 50% 30%;
+    position: relative;
+    overflow: hidden;
+
+}
+.top{
+    transform: rotate(-45deg);
+}
+.bottom{
+    transform: rotate(135deg);
+}
+.top::before,
+.bottom::before{
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    background-color: #cabbe9;
+    animation: 2s linear infinite;
+}
+.top::before{
+    border-radius: 0 100% 0 0;
+    animation-name: drop-sand;
+}
+.bottom::before{
+    border-radius: 0 0 0 25%;
+    transform: translate(50px,-50px);
+    animation-name: fill-sand;
+}
+.loading::after{
+    content: "";
+    width: 5px;
+    height: 96px;
+    background-color: #cabbe9;
+    position: absolute;
+    top:20px;
+    animation: flow 2s linear infinite;
+}
+@keyframes drop-sand{
+    to{
+        transform: translate(-50px,50px);
+    }
+}
+@keyframes fill-sand{
+    to{
+        transform: translate(0,0);
+    }
+}
+@keyframes flow{
+     10%,100%{
+        transform: translateY(64px);
+     }
+}
+@keyframes rotating{
+    10%, 90%{
+        transform: rotate(0deg);
+     }
+     100%{
+        transform: rotate(180deg);
+     }
+}
